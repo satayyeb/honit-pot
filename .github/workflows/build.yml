@@ -106,6 +106,9 @@ jobs:
       - name: Build and push docker image
         run: |
           cp ./bin/pot ./pot-exe
+          file pot-exe
+          file pot
+          ls pot
           export TAG=${GITHUB_SHA::8}
           docker build . -t ${{ secrets.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${TAG}
           docker push ${{ secrets.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${TAG}
