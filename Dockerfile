@@ -2,7 +2,7 @@ FROM alpine
 
 WORKDIR /app
 
-COPY pot /app/pot
+COPY bin/pot /app/pot
 
 RUN chmod +x /app/pot
 

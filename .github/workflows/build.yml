@@ -106,10 +106,6 @@ jobs:
       - name: Build and push docker image
         run: |
           export TAG=${GITHUB_SHA::8}
-          cp ./bin/pot ./pot  # Dockerfile expects it in root
-          file ./pot
-          ls ./pot
-          file ./pot/pot
           docker build . -t ${{ secrets.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${TAG}
           docker push ${{ secrets.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${TAG}
 
