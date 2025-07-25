@@ -7,6 +7,8 @@ a = Analysis(
     binaries=[],
     datas=[
         ('pot/*', 'pot'),
+        ('pot/ssh/*', 'pot/ssh/'),
+        ('pot/kubernetes/*', 'pot/kubernetes/'),
     ],
     hiddenimports=[],
     hookspath=[],
