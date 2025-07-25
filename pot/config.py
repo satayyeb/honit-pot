@@ -10,7 +10,7 @@ class Config(metaclass=SingletonABCMeta):
     base_url: str
     services: list[Service] = []
 
-    def __init__(self, config_file_path: str | None):
+    def __init__(self, config_file_path: str | None = None):
         if not config_file_path:
             self.handle_single_mode()
 
@@ -42,7 +42,7 @@ class Config(metaclass=SingletonABCMeta):
         self.services.append(
             Service(
                 name=name,
-                type=ServiceType.from_string(type),
+                type=type,
                 id=int(id),
                 token=token,
                 port=int(port),

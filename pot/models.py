@@ -20,7 +20,7 @@ class ServiceType(Enum):
 @dataclass
 class Service:
     name: str
-    type: ServiceType
+    type: str
     id: int
     token: str
     port: int
