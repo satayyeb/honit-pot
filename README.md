@@ -12,7 +12,7 @@ A simple and lightweight client for Honit network system.
     python -m venv .venv
     . .venv/bin/activate
     pip install -r requirements.txt
-    python start.py
+    python main.py
 ```
 
 3- Enjoy

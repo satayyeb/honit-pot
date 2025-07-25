@@ -8,8 +8,8 @@ class Config(metaclass=SingletonABCMeta):
     base_url: str
     services: list[Service] = []
 
-    def __init__(self):
-        with open('config.yaml', 'r') as stream:
+    def __init__(self, config_file_path: str):
+        with open(config_file_path, 'r') as stream:
             config_yaml = yaml.safe_load(stream)
             self.base_url = config_yaml['base_url']
             for item in config_yaml['services']:
