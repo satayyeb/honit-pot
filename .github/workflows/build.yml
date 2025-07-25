@@ -30,7 +30,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: linux-binary
-          path: dist/main
+          path: dist/pot
 
   build-windows:
     name: Build on Windows
@@ -55,7 +55,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: windows-binary
-          path: dist/main.exe
+          path: dist/pot.exe
 
   build-macos:
     name: Build on macOS
@@ -80,4 +80,47 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: macos-binary
-          path: dist/main
+          path: dist/pot
+
+  release:
+    name: Create GitHub Release
+    needs: [build-linux, build-windows, build-macos]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: release-v1.0.${{ github.run_number }}
+          name: Release v1.0.${{ github.run_number }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Linux binary
+        uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/linux-binary/pot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Windows binary
+        uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/windows-binary/pot.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload macOS binary
+        uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/macos-binary/pot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
