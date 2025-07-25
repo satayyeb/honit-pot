@@ -4,4 +4,6 @@ WORKDIR /app
 
 COPY pot /app/pot
 
-ENTRYPOINT ["/app/pot/pot"]
+RUN chmod +x /app/pot
+
+ENTRYPOINT ["/app/pot"]
