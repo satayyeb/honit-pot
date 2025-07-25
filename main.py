@@ -8,7 +8,7 @@ from pot.ssh.ssh import ssh_runer
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', required=True, help='Path to the config YAML file')
+    parser.add_argument('--config', help='Path to the config YAML file')
     args = parser.parse_args()
 
     process_list = []
