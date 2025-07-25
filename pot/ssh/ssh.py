@@ -7,6 +7,7 @@ from typing import Optional
 
 from pot.llm import LLMApi
 from pot.models import Service
+from pot.util import resource_path
 
 ssh_service: Service
 
@@ -63,7 +64,7 @@ async def start_server(port: int) -> None:
         MySSHServer,
         '',
         port,
-        server_host_keys=['pot/ssh/ssh_host_key'],
+        server_host_keys=[resource_path('pot/ssh/ssh_host_key')],
         process_factory=handle_client,
     )
 

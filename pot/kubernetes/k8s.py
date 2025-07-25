@@ -7,6 +7,7 @@ from pot.llm import LLMApi
 import json
 
 from pot.models import Service
+from pot.util import resource_path
 
 app = FastAPI()
 
@@ -66,5 +67,10 @@ async def catch_all(request: Request, full_path: str):
 def kubernetes_runner(service: Service):
     global k8s_service
     k8s_service = service
-    uvicorn.run(app, host="127.0.0.1", port=service.port, ssl_certfile="pot/kubernetes/cert.pem",
-                ssl_keyfile="pot/kubernetes/key.pem")
+    uvicorn.run(
+        app,
+        host="127.0.0.1",
+        port=service.port,
+        ssl_certfile=resource_path("pot/kubernetes/cert.pem"),
+        ssl_keyfile=resource_path("pot/kubernetes/key.pem"),
+    )
