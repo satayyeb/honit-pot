@@ -3,3 +3,5 @@ pot/config.yaml
 .idea
 dist
 build
+*/__pycache__/*
+*/*/__pycache__/*
