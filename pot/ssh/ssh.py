@@ -1,13 +1,12 @@
 # To run this program, the file ``ssh_host_key`` must exist with an SSH
 # private key in it to use as a server host key. An SSH host certificate
 # can optionally be provided in the file ``ssh_host_key-cert.pub``.
-import os
 import asyncio, asyncssh, sys
 from textwrap import dedent
 from typing import Optional
 
-from llm import LLMApi
-from models import Service
+from pot.llm import LLMApi
+from pot.models import Service
 
 ssh_service: Service
 
@@ -64,7 +63,7 @@ async def start_server(port: int) -> None:
         MySSHServer,
         '',
         port,
-        server_host_keys=['ssh/ssh_host_key'],
+        server_host_keys=['pot/ssh/ssh_host_key'],
         process_factory=handle_client,
     )
 

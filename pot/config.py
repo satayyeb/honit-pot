@@ -1,5 +1,5 @@
-from models import Service
-from singleton import SingletonABCMeta
+from pot.models import Service
+from pot.singleton import SingletonABCMeta
 
 import yaml
 

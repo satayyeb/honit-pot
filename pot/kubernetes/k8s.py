@@ -3,10 +3,10 @@ import re
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 import uvicorn
-from llm import LLMApi
+from pot.llm import LLMApi
 import json
 
-from models import Service
+from pot.models import Service
 
 app = FastAPI()
 
@@ -66,5 +66,5 @@ async def catch_all(request: Request, full_path: str):
 def kubernetes_runner(service: Service):
     global k8s_service
     k8s_service = service
-    uvicorn.run(app, host="127.0.0.1", port=service.port, ssl_certfile="kubernetes/cert.pem",
-                ssl_keyfile="kubernetes/key.pem")
+    uvicorn.run(app, host="127.0.0.1", port=service.port, ssl_certfile="pot/kubernetes/cert.pem",
+                ssl_keyfile="pot/kubernetes/key.pem")

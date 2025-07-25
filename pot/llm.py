@@ -1,7 +1,7 @@
 import requests
 
-from config import Config
-from models import Service
+from pot.config import Config
+from pot.models import Service
 
 
 

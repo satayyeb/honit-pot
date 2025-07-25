@@ -1,4 +1,4 @@
-config.yaml
+pot/config.yaml
 .venv
 .idea
 dist

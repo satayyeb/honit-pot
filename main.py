@@ -1,10 +1,10 @@
 import argparse
 import multiprocessing
 
-from config import Config
-from kubernetes.k8s import kubernetes_runner
-from models import ServiceType
-from ssh.ssh import ssh_runer
+from pot.config import Config
+from pot.kubernetes.k8s import kubernetes_runner
+from pot.models import ServiceType
+from pot.ssh.ssh import ssh_runer
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
