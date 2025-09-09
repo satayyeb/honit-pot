@@ -5,3 +5,5 @@ dist
 build
 */__pycache__/*
 */*/__pycache__/*
+benchmark/failed_tests/*
+benchmark/result.txt

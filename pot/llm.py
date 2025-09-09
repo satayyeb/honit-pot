@@ -10,7 +10,7 @@ class LLMApi:
         self.service = service
         self.session_base = session_base
         self.session_id = 0
-        self.history = []
+        self.history = []  # TODO: Remove from here and move to the subclass
 
     def chat(self, message: str) -> str:
         try:
